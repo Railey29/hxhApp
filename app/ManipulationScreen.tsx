@@ -6,12 +6,11 @@ import React, { useCallback, useRef } from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CustomButton from "../components/CustomButton";
 import CustomImage from "../components/CustomImage";
 
 const { height, width } = Dimensions.get("window");
 
-export default function DisclaimerScreen() {
+export default function ManipulationScreen() {
   const viewRef = useRef<Animatable.View & View & any>(null);
   const imageRef = useRef<Animatable.Image & any>(null);
   const buttonRef = useRef<Animatable.View & any>(null);
@@ -36,18 +35,19 @@ export default function DisclaimerScreen() {
   return (
     <SafeAreaView style={styles.safeArea} edges={["top", "bottom"]}>
       <View style={styles.container}>
-        {/* Header (4%) of screen */}
+        {/* Header (4%) */}
         <HeaderComponent
           height={sectionHeight}
-          title="Disclaimer"
+          title="Manipulation"
           viewRef={viewRef}
         />
-        {/* Main (94%)  of screen*/}
+
+        {/* Main (94%) */}
         <View style={styles.mainContainer}>
           <CustomImage
             animation="slideInRight"
             duration={800}
-            source={require("../assets//images/logo1.png")}
+            source={require("../assets//images/Shalnark.jpg")}
             width={imageWidth}
             height={imageHeight}
             resizeMode="contain"
@@ -59,26 +59,26 @@ export default function DisclaimerScreen() {
             style={styles.MainContentText}
             ref={textRef}
           >
-            This app is fan-made and intended for educational and entertainment
-            purposes only. All characters, abilities, and content are inspired
-            by the Hunter x Hunter series and remain the property of their
-            respective owners. The app does not claim ownership of any
-            copyrighted material. The creators of this app are not affiliated
-            with, endorsed by, or sponsored by the original publishers or
-            creators of Hunter x Hunter. All information provided within the app
-            is for informational purposes only. Users are responsible for their
-            own actions, and the app’s creators cannot be held liable for any
-            consequences arising from its use.
+            In Hunter x Hunter (HxH), Manipulation is a Nen ability type that
+            allows a user to control living or non-living things using their
+            aura, giving them the ability to influence actions, movements, or
+            behaviors. Essentially, a Manipulator can make targets act according
+            to their will, often within specific conditions or rules.
           </Animatable.Text>
-          <CustomButton
-            title="Continue?"
-            onPress={() => router.push("/DashboardScreen")}
+          <Animatable.Text
             animation="slideInLeft"
-            ref={buttonRef}
-          />
+            duration={800}
+            style={styles.MainContentText}
+            ref={textRef}
+          >
+            Manipulation (操作系, Sōsa-kei) – A Nen ability type in which the
+            user controls objects, people, or other living beings by exerting
+            their aura, often with specific limitations or conditions to
+            strengthen the effect.
+          </Animatable.Text>
         </View>
 
-        {/* Footer (2%)  of screen*/}
+        {/* Footer (2%) */}
         <FooterComponent height={footerHeight} viewRef={viewRef} />
       </View>
     </SafeAreaView>
@@ -107,10 +107,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginTop: height * 0.02,
   },
+  footerContainer: {
+    width: Dimensions.get("window").width,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#1f1d1d",
+  },
   headerText: {
     color: "white",
     fontWeight: "600",
     fontSize: 16,
+    fontFamily: "serif",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  footerText: {
+    color: "white",
+    fontSize: 14,
     fontFamily: "serif",
     justifyContent: "center",
     alignItems: "center",

@@ -1,9 +1,11 @@
-import CustomButton from "../components/CustomButton";
+import FooterComponent from "@/components/FooterComponent";
+import HeaderComponent from "@/components/HeaderCompnent";
+import { useFocusEffect, useRouter } from "expo-router";
 import React, { useCallback, useRef } from "react";
-import { View, StyleSheet, Text, Dimensions } from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useFocusEffect, useRouter } from "expo-router";
+import CustomButton from "../components/CustomButton";
 import CustomImage from "../components/CustomImage";
 
 const { height, width } = Dimensions.get("window");
@@ -34,19 +36,13 @@ export default function DashboardScreen() {
   return (
     <SafeAreaView style={styles.safeArea} edges={["top", "bottom"]}>
       <View style={styles.container}>
-        {/* Header (4%) */}
-        <Animatable.View
-          animation="slideInDown"
-          duration={700}
-          style={[styles.headerContainer, { height: sectionHeight }]}
-          ref={viewRef}
-        >
-          <Text style={styles.headerText}>
-            Select Nen Type You want to Explore
-          </Text>
-        </Animatable.View>
-
-        {/* Main (94%) */}
+        {/* Header (4%)  of screen*/}
+        <HeaderComponent
+          height={sectionHeight}
+          title="Select Nen Type You want to Explore"
+          viewRef={viewRef}
+        />
+        {/* Main (94%) of screen*/}
         <View style={styles.mainContainer}>
           <CustomImage
             animation="slideInRight"
@@ -59,56 +55,49 @@ export default function DashboardScreen() {
           />
           <CustomButton
             title="Enhancement"
-            onPress={() => router.push("/DashboardScreen")}
+            onPress={() => router.push("/EnhancementScreen")}
             animation="slideInLeft"
             width={width * 0.9}
             ref={buttonRef}
           />
           <CustomButton
             title="Transmutation"
-            onPress={() => router.push("/DashboardScreen")}
+            onPress={() => router.push("/TransmutationScreen")}
             animation="slideInLeft"
             width={width * 0.9}
           />
           <CustomButton
             title="Emission"
-            onPress={() => router.push("/DashboardScreen")}
+            onPress={() => router.push("/EmissionScreen")}
             animation="slideInLeft"
             width={width * 0.9}
             ref={buttonRef}
           />
           <CustomButton
             title="Conjuration"
-            onPress={() => router.push("/DashboardScreen")}
+            onPress={() => router.push("/ConjurationScreen")}
             animation="slideInLeft"
             width={width * 0.9}
             ref={buttonRef}
           />
           <CustomButton
             title="Manipulation"
-            onPress={() => router.push("/DashboardScreen")}
+            onPress={() => router.push("/ManipulationScreen")}
             animation="slideInLeft"
             width={width * 0.9}
             ref={buttonRef}
           />
           <CustomButton
             title="Specialization"
-            onPress={() => router.push("/DashboardScreen")}
+            onPress={() => router.push("/SpecializationScreen")}
             animation="slideInLeft"
             width={width * 0.9}
             ref={buttonRef}
           />
         </View>
 
-        {/* Footer (2%) */}
-        <Animatable.View
-          animation="slideInUp"
-          duration={700}
-          style={[styles.footerContainer, { height: footerHeight }]}
-          ref={viewRef}
-        >
-          <Text style={styles.footerText}>© 2025 Railey Pacheco</Text>
-        </Animatable.View>
+        {/* Footer (2%) of screen*/}
+        <FooterComponent height={footerHeight} viewRef={viewRef} />
       </View>
     </SafeAreaView>
   );

@@ -1,5 +1,5 @@
-import DisclaimerScreen from "./DisclaimerScreen";
 import { View } from "react-native";
+import DisclaimerScreen from "./DisclaimerScreen";
 export default function Index() {
   return (
     <View
