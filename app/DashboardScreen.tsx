@@ -54,41 +54,41 @@ export default function DashboardScreen() {
             ref={imageRef}
           />
           <CustomButton
-            title="Enhancement"
+            title="Enhancer"
             onPress={() => router.push("/EnhancementScreen")}
             animation="slideInLeft"
             width={width * 0.9}
             ref={buttonRef}
           />
           <CustomButton
-            title="Transmutation"
+            title="Transmuter"
             onPress={() => router.push("/TransmutationScreen")}
             animation="slideInLeft"
             width={width * 0.9}
           />
           <CustomButton
-            title="Emission"
+            title="Emitter"
             onPress={() => router.push("/EmissionScreen")}
             animation="slideInLeft"
             width={width * 0.9}
             ref={buttonRef}
           />
           <CustomButton
-            title="Conjuration"
+            title="Conjurer"
             onPress={() => router.push("/ConjurationScreen")}
             animation="slideInLeft"
             width={width * 0.9}
             ref={buttonRef}
           />
           <CustomButton
-            title="Manipulation"
+            title="Manipulator"
             onPress={() => router.push("/ManipulationScreen")}
             animation="slideInLeft"
             width={width * 0.9}
             ref={buttonRef}
           />
           <CustomButton
-            title="Specialization"
+            title="Specialist"
             onPress={() => router.push("/SpecializationScreen")}
             animation="slideInLeft"
             width={width * 0.9}

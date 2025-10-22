@@ -1,3 +1,4 @@
+import CustomButton from "@/components/CustomButton";
 import FooterComponent from "@/components/FooterComponent";
 import HeaderComponent from "@/components/HeaderCompnent";
 import { useFocusEffect } from "@react-navigation/native";
@@ -38,7 +39,7 @@ export default function TransmutationScreen() {
         {/* Header (4%) */}
         <HeaderComponent
           height={sectionHeight}
-          title="Transmutation"
+          title="Transmuter"
           viewRef={viewRef}
         />
 
@@ -76,6 +77,17 @@ export default function TransmutationScreen() {
             the user alters the natural properties of their aura to mimic the
             characteristics of another substance or element.
           </Animatable.Text>
+          <CustomButton
+            title="Start Quiz"
+            onPress={() =>
+              router.push({
+                pathname: "/QuizScreen",
+                params: { type: "Transmutation" },
+              })
+            }
+            animation="slideInLeft"
+            ref={buttonRef}
+          />
         </View>
 
         {/* Footer (2%) */}

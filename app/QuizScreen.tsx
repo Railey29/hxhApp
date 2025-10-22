@@ -1,17 +1,17 @@
-import CustomButton from "@/components/CustomButton";
 import FooterComponent from "@/components/FooterComponent";
 import HeaderComponent from "@/components/HeaderCompnent";
+import QuizComponent from "@/components/QuizComponent";
+import { getQuizData } from "@/utils/getDQuizData";
 import { useFocusEffect } from "@react-navigation/native";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useCallback, useRef } from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CustomImage from "../components/CustomImage";
 
 const { height, width } = Dimensions.get("window");
 
-export default function EnhancementScreen() {
+export default function QuizScreen() {
   const viewRef = useRef<Animatable.View & View & any>(null);
   const imageRef = useRef<Animatable.Image & any>(null);
   const buttonRef = useRef<Animatable.View & any>(null);
@@ -23,6 +23,10 @@ export default function EnhancementScreen() {
   const imageWidth = width * 0.6;
   const imageHeight = height * 0.25;
 
+  const { type } = useLocalSearchParams();
+  const quizType = type as string;
+  const quizData = getQuizData(quizType);
+
   const router = useRouter();
 
   useFocusEffect(
@@ -33,63 +37,23 @@ export default function EnhancementScreen() {
       if (textRef.current) textRef.current.slideInLeft(800);
     }, [])
   );
+
   return (
     <SafeAreaView style={styles.safeArea} edges={["top", "bottom"]}>
       <View style={styles.container}>
         {/* Header (4%) */}
         <HeaderComponent
           height={sectionHeight}
-          title="Enhancer"
+          title="Quiz"
           viewRef={viewRef}
         />
 
         {/* Main (94%) */}
         <View style={styles.mainContainer}>
-          <CustomImage
-            animation="slideInRight"
-            duration={800}
-            source={require("../assets//images/Gon.jpg")}
-            width={imageWidth}
-            height={imageHeight}
-            resizeMode="contain"
-            ref={imageRef}
-          />
-          <Animatable.Text
-            animation="slideInLeft"
-            duration={800}
-            style={styles.MainContentText}
-            ref={textRef}
-          >
-            In Hunter × Hunter, the Enhancement (Enhancer) Nen type is one of
-            the six main Nen categories defined by the Ten Laws of Nen. An
-            Enhancer specializes in strengthening the natural abilities of their
-            body or objects, making them more powerful, durable, or effective.
-            Essentially, they improve what already exists, rather than creating
-            entirely new effects.
-          </Animatable.Text>
-          <Animatable.Text
-            animation="slideInLeft"
-            duration={800}
-            style={styles.MainContentText}
-            ref={textRef}
-          >
-            Enhancement (強化系, Kyōka-kei) – A Nen ability type where the user
-            strengthens or reinforces the natural properties of their aura to
-            increase the power, speed, durability, or other innate qualities of
-            themselves or objects they touch. Unlike Transmutation, the aura
-            itself doesn’t change into something else; it simply amplifies what
-            already exists{" "}
-          </Animatable.Text>
-          <CustomButton
-            title="Start Quiz"
-            onPress={() =>
-              router.push({
-                pathname: "/QuizScreen",
-                params: { type: "Enhancement" },
-              })
-            }
-            animation="slideInLeft"
-            ref={buttonRef}
+          <QuizComponent
+            question={quizData}
+            onFinish={() => router.push("/DashboardScreen")}
+            height={sectionHeight}
           />
         </View>
 

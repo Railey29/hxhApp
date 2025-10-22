@@ -1,3 +1,4 @@
+import CustomButton from "@/components/CustomButton";
 import FooterComponent from "@/components/FooterComponent";
 import HeaderComponent from "@/components/HeaderCompnent";
 import { useFocusEffect } from "@react-navigation/native";
@@ -38,7 +39,7 @@ export default function ConjurationSCreen() {
         {/* Header (4%) */}
         <HeaderComponent
           height={sectionHeight}
-          title="Conjuration"
+          title="Conjurer"
           viewRef={viewRef}
         />
 
@@ -76,6 +77,17 @@ export default function ConjurationSCreen() {
             have specific properties, abilities, or uses depending on the user’s
             creativity and rules.
           </Animatable.Text>
+          <CustomButton
+            title="Start Quiz"
+            onPress={() =>
+              router.push({
+                pathname: "/QuizScreen",
+                params: { type: "Conjuration" },
+              })
+            }
+            animation="slideInLeft"
+            ref={buttonRef}
+          />
         </View>
 
         {/* Footer (2%) */}

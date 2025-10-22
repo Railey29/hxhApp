@@ -1,3 +1,4 @@
+import CustomButton from "@/components/CustomButton";
 import FooterComponent from "@/components/FooterComponent";
 import HeaderComponent from "@/components/HeaderCompnent";
 import { useFocusEffect } from "@react-navigation/native";
@@ -38,7 +39,7 @@ export default function SpecializationScreen() {
         {/* Header (4%) */}
         <HeaderComponent
           height={sectionHeight}
-          title="Specialization"
+          title="Specialist"
           viewRef={viewRef}
         />
 
@@ -76,6 +77,17 @@ export default function SpecializationScreen() {
             Transmutation, Emission, Conjuration, and Manipulation. These
             abilities often have special conditions or extraordinary effects.
           </Animatable.Text>
+          <CustomButton
+            title="Start Quiz"
+            onPress={() =>
+              router.push({
+                pathname: "/QuizScreen",
+                params: { type: "Specialization" },
+              })
+            }
+            animation="slideInLeft"
+            ref={buttonRef}
+          />
         </View>
 
         {/* Footer (2%) */}

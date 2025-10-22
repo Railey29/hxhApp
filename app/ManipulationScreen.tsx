@@ -1,3 +1,4 @@
+import CustomButton from "@/components/CustomButton";
 import FooterComponent from "@/components/FooterComponent";
 import HeaderComponent from "@/components/HeaderCompnent";
 import { useFocusEffect } from "@react-navigation/native";
@@ -38,7 +39,7 @@ export default function ManipulationScreen() {
         {/* Header (4%) */}
         <HeaderComponent
           height={sectionHeight}
-          title="Manipulation"
+          title="Manipulator"
           viewRef={viewRef}
         />
 
@@ -76,6 +77,17 @@ export default function ManipulationScreen() {
             their aura, often with specific limitations or conditions to
             strengthen the effect.
           </Animatable.Text>
+          <CustomButton
+            title="Start Quiz"
+            onPress={() =>
+              router.push({
+                pathname: "/QuizScreen",
+                params: { type: "Manipulation" },
+              })
+            }
+            animation="slideInLeft"
+            ref={buttonRef}
+          />
         </View>
 
         {/* Footer (2%) */}
